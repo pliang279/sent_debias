@@ -44,17 +44,17 @@ Unpack it to some directory `$GLUE_DIR`.
 
 ## Precomputed models and embeddings (optional)
 1. Models
-    * Download to `debias-BERT/experiments`.
+    * Download https://drive.google.com/file/d/1cAN49-HDHFdNP1GJZn83s2-mEGCeZWjh/view?usp=sharing to `debias-BERT/experiments`.
     * 
       ```
-      tar -xvf acl2020-results
+      tar -xvf acl2020-results.tar.gz
       ```
 
 2. Embeddings
-    * Download to `debias-BERT/experiments`.
+    * Download https://drive.google.com/file/d/1ubKn8SCjwnp9pYjQa9SmKWxFojX9a6Bz/view?usp=sharing to `debias-BERT/experiments`.
     * 
       ```
-      tar -xvf saved_embs
+      tar -xvf saved_embs.tar.gz
       ```
 
 ## Usage
@@ -137,4 +137,4 @@ If you choose to use precomputed models and embeddings, skip to step B. Otherwis
       --results_dir path/to/results_directory \
       --output_name biased 
       ```
-    Again, the evaluation results will be stored in the file `results_dir/output_name`.
+    Again, the bias evaluation results will be stored in the file `results_dir/output_name`.
