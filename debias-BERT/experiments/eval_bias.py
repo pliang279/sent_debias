@@ -21,7 +21,7 @@ from eval_utils import isInSet
 import weat
 from run_classifier import get_encodings, compute_gender_dir, get_tokenizer_encoder
 from run_classifier import get_def_examples
-from examples.def_sent_utils import get_all, get_all_domains, get_def_pairs
+from experiments.def_sent_utils import get_all, get_all_domains, get_def_pairs
 from my_debiaswe import my_we
 
 logger = logging.getLogger(__name__)
