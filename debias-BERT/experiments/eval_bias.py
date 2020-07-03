@@ -120,18 +120,11 @@ def _binary_s(target, attributes):
 	for aj in attributes[1]:
 		groupTwo.append(spatial.distance.cosine(target, aj))
 	return sum(groupOne)/float(len(groupOne)) - sum(groupTwo)/float(len(groupTwo))
-	# return np.absolute(sum(groupOne)/float(len(groupOne)) - sum(groupTwo)/float(len(groupTwo)))
-
+	
 
 def save_dict_to_json(D, output_eval_file):
-	# D = {"eval_loss": 0.5, "train_loss": 0.99, "nya": {"hello": 3.1, "world": 9.9}}
-	# output_eval_file = 'data.json'
 	with open(output_eval_file, 'w') as f:
 		json.dump(D, f)
-
-	# with open(output_eval_file, 'rb') as f:
-	# 	data = json.load(f)
-	# print(data)
 
 
 def run_binary_weat_test(encs):
@@ -196,10 +189,6 @@ def evaluate(args, def_pairs, word_level=False):
 
 		esize, pval = weat.run_test(encs, n_samples=args.n_samples, parametric=args.parametric)
 		abs_esizes.append(abs(esize))
-		# weat_score, effect_size = run_binary_weat_test(encs)
-		# results.append("{}: esize={} pval={} | w_score={} esize={}".format(filename, 
-		# 	esize, pval, weat_score, effect_size))
-		# test_results = {"esize": esize, "pval": pval, "weat_score": weat_score, "effect_size": effect_size}
 
 		result = "{}: esize={} pval={}".format(filename, esize, pval)
 		print(filename, result)
@@ -212,10 +201,11 @@ def evaluate(args, def_pairs, word_level=False):
 	all_tests_dict['avg_absesize'] = avg_absesize
 
 	if (args.encode_only): return
+	
 	# print and save results
 	for result in results: logger.info(result)
-
 	save_dict_to_json(all_tests_dict, results_path)
+
 	return
 
 
@@ -317,11 +307,9 @@ class WordEvaluator(object):
 		args = self.args
 		with open(args.definitional_filename, "r") as f:
 			definitional = json.load(f)
-		# print("definitional", definitional)
 
 		with open(args.equalize_filename, "r") as f:
 			equalize = json.load(f)
-		# print("equalize", equalize)
 
 		with open(args.gendered_words_filename, "r") as f:
 			gender_specific_words = json.load(f)
@@ -382,7 +370,7 @@ class WordEvaluator(object):
 		candidates = {x for e1, e2 in equalize_subset for x in [(e1.lower(), e2.lower()),
 														 (e1.title(), e2.title()),
 														 (e1.upper(), e2.upper())]}
-		# print(candidates)
+
 		for (a, b) in candidates:
 			if (a in self.E.index and b in self.E.index):
 				y = my_we.drop((self.E.v(a) + self.E.v(b)) / 2, gender_direction)
@@ -397,7 +385,6 @@ class WordEvaluator(object):
 
 	def get_sent_embedding(self, sent):
 		words = tokenize(sent)
-		# word_embeddings = np.array([self.model.word_vec(w) for w in words]) # T x W(300)
 		word_embeddings = np.array([self.E.v(w) for w in words]) # T x W(300)
 		sent_embeddings = np.mean(word_embeddings, axis=0)
 		return sent_embeddings

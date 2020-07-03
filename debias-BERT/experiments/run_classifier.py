@@ -225,8 +225,6 @@ class BertEncoder(object):
 		embeddings = self.bert(input_ids, token_type_ids=token_type_ids, 
 			attention_mask=attention_mask, word_level=word_level, 
 			remove_bias=False, bias_dir=None, encode_only=True)
-		# embeddings = self.bert(input_ids, token_type_ids=token_type_ids, 
-		# 		attention_mask=attention_mask, output_all_encoded_layers=False, encode_only=True)
 		return embeddings
 
 
@@ -448,20 +446,6 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
 		else:
 			label_id = None
 
-		# if ex_index < 5:
-		# 	logger.info("*** Example ***")
-		# 	logger.info("guid: %s" % (example.guid))
-		# 	logger.info("tokens: %s" % " ".join(
-		# 			[str(x) for x in tokens]))
-		# 	logger.info("input_ids: %s" % " ".join([str(x) for x in input_ids]))
-		# 	logger.info("input_mask: %s" % " ".join([str(x) for x in input_mask]))
-		# 	logger.info(
-		# 			"segment_ids: %s" % " ".join([str(x) for x in segment_ids]))
-		# 	if (label_list != None):
-		# 		logger.info("label: %s (id = %d)" % (example.label, label_id))
-		# 	else:
-		# 		logger.info("no labels")
-
 		features.append(
 				InputFeatures(tokens=tokens,
 							  input_ids=input_ids,
@@ -476,9 +460,6 @@ def convert_examples_to_dualfeatures(examples, label_list, max_seq_length, token
 	'''
 	output_mode: classification or regression
 	'''	
-	# if (label_list != None):
-	# 	label_map = {label : i for i, label in enumerate(label_list)}
-
 	features = []
 	for (ex_index, example) in enumerate(tqdm(examples)):
 		if ex_index % 10000 == 0:
