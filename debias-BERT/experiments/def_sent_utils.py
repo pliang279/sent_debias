@@ -88,11 +88,11 @@ def get_pom():
 			for sent in data.lower().split('.'):
 				sent = sent.strip()
 				sent_list = sent.split(' ')
-				if True: # len(sent_list) < 10:
-					total += len(sent_list)
-					num += 1
-					all_pairs2 = template2(words2, sent, sent_list, all_pairs2)
-					all_pairs3 = template3(words3, sent, sent_list, all_pairs3)
+
+				total += len(sent_list)
+				num += 1
+				all_pairs2 = template2(words2, sent, sent_list, all_pairs2)
+				all_pairs3 = template3(words3, sent, sent_list, all_pairs3)
 	return all_pairs2, all_pairs3
 
 def get_rest(filename):
@@ -111,8 +111,6 @@ def get_rest(filename):
 		all_pairs2 = template2(words2, sent, sent_list, all_pairs2)
 		all_pairs3 = template3(words3, sent, sent_list, all_pairs3)
 
-	# print (all_pairs2, len(all_pairs2)) # total/float(num))
-	# print (all_pairs3, len(all_pairs3)) # total/float(num))
 	print(filename, len(all_pairs2))
 	return all_pairs2, all_pairs3
 
@@ -269,7 +267,6 @@ def check_bucket_size(D):
 			break
 	return n
 
-
 # domain: news, reddit, sst, pom, wikitext
 def get_single_domain(domain):
 	if (domain == "pom"):
@@ -334,7 +331,3 @@ def get_def_pairs(def_pairs_name):
 
 if __name__ == '__main__':
 	data = get_all()
-	print(data.keys())
-	for i in data: print(data[i].keys())
-	for key in data[0]:
-		print(data[0][key][:5])

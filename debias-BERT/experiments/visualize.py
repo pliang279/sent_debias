@@ -334,10 +334,11 @@ if __name__ == '__main__':
 		visualize_few_words(debiased=True, do_PCA=False, do_tsne=True, perplexity=p)
 		visualize_few_words(debiased=False, do_PCA=False, do_tsne=True, perplexity=p)
 	
-	# # PCA and tsne
-	# for p in [2, 4, 8, 16]:
-	# 	visualize_few_words(debiased=True, do_PCA=True, do_tsne=True, perplexity=p)
-	# 	visualize_few_words(debiased=False, do_PCA=True, do_tsne=True, perplexity=p)
-	# # PCA only
-	# visualize_few_words(debiased=True, do_PCA=True, do_tsne=False)
-	# visualize_few_words(debiased=False, do_PCA=True, do_tsne=False)
+	# PCA and tsne
+	for p in [2, 4, 8, 16]:
+		visualize_few_words(debiased=True, do_PCA=True, do_tsne=True, perplexity=p)
+		visualize_few_words(debiased=False, do_PCA=True, do_tsne=True, perplexity=p)
+	
+	# PCA only
+	visualize_few_words(debiased=True, do_PCA=True, do_tsne=False)
+	visualize_few_words(debiased=False, do_PCA=True, do_tsne=False)
