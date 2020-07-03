@@ -33,7 +33,7 @@ The next step is to clone the repository:
 git clone https://github.com/pliang279/sent_debias.git
 ```
 
-To install bert models, go to `pytorch-pretrained-BERT/`, run ```pip install .```
+To install bert models, go to `debias-BERT/`, run ```pip install .```
 
 ## Data
 Download the [GLUE data](https://gluebenchmark.com/tasks) by running this [script](https://gist.github.com/W4ngatang/60c2bdb54d156a41194446737ce03e2e):
@@ -42,9 +42,28 @@ python download_glue_data.py --data_dir glue_data --tasks SST,QNLI,CoLA
 ```
 Unpack it to some directory `$GLUE_DIR`.
 
-## Usage: Fine-tune BERT and evaluate on downstream tasks
+## Precomputed models and embeddings (optional)
+1. Models
+    * Download to `debias-BERT/examples`.
+    * 
+      ```
+      tar -xvf acl2020-results
+      ```
 
-1. Go to `pytorch-pretrained-BERT/examples`.
+2. Embeddings
+    * Download to `debias-BERT/examples`.
+    * 
+      ```
+      tar -xvf saved_embs
+      ```
+
+## Usage
+
+If you choose to use precomputed models and embeddings, skip to step B. Otherwise, follow step A and B sequentially.
+
+### A. Fine-tune BERT
+
+1. Go to `debias-BERT/examples`.
 2. Run `export TASK_NAME=SST-2` (task can be one of SST-2, CoLA, and QNLI).
 4. Fine tune BERT on `$TASK_NAME`.
     * With debiasing
@@ -74,29 +93,34 @@ Unpack it to some directory `$GLUE_DIR`.
       ```
     The fine-tuned model and dev set evaluation results will be stored under the specified `output_dir`.
 
-## Usage: Evaluate bias in BERT representations
+### B. Evaluate bias in BERT representations
 
-1. Go to `pytorch-pretrained-BERT/examples`.
+1. Go to `debias-BERT/examples`.
 2. Run ` export TASK_NAME=SST-2` (task can be one of SST-2, CoLA, and QNLI).
 3. Evaluate fine-tuned BERT on bias level.
     * Evaluate debiased fine-tuned BERT.
-    ```
-      python eval_bias.py \
-      --debias \
-      --model_path path/to/model \
-      --model $TASK_NAME \
-      --results_dir path/to/results_directory \
-      --output_name debiased
-    ```
+      ```
+        python eval_bias.py \
+        --debias \
+        --model_path path/to/model \
+        --model $TASK_NAME \
+        --results_dir path/to/results_directory \
+        --output_name debiased
+      ```
+      If using precomputed models, set `model_path` to `acl2020-results/$TASK_NAME/debiased`.
     * Evaluate biased fine-tuned BERT.
-    ```
-      python eval_bias.py \
-      --model_path path/to/model \
-      --model $TASK_NAME \
-      --results_dir path/to/results_directory \
-      --output_name biased
-    ```
-    The argument `model_path` should be specified as the `output_dir` corresponding to the fine-tuned model you want to evaluate. The evaluation results will be stored in the file `results_dir/output_name`.
+      ```
+        python eval_bias.py \
+        --model_path path/to/model \
+        --model $TASK_NAME \
+        --results_dir path/to/results_directory \
+        --output_name biased
+      ```
+      If using precomputed models, set `model_path` to `acl2020-results/$TASK_NAME/biased`.
+
+    The evaluation results will be stored in the file `results_dir/output_name`. 
+
+    Note: The argument `model_path` should be specified as the `output_dir` corresponding to the fine-tuned model you want to evaluate. Specifically, `model_path` should be a directory containing the following files: `config.json`, `pytorch_model.bin` and `vocab.txt`. 
 4. Evaluate pretrained BERT on bias level.
     * Evaluate debiased pretrained BERT.
       ```
