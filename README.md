@@ -70,7 +70,7 @@ If you choose to use precomputed models and embeddings, skip to step B. Otherwis
       ```
       python run_classifier.py \
       --data_dir $GLUE_DIR/$TASK_NAME/ \
-      --task_name $TASK_NAME\
+      --task_name $TASK_NAME \
       --output_dir path/to/results_directory \
       --do_train \
       --do_eval \
