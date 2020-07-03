@@ -670,7 +670,7 @@ def parse_args():
 
 	parser.add_argument("--def_pairs_name", default="all", type=str,
 						help="Name of definitional sentence pairs.")
-	parser.add_argument("--num_dimension", "-k", type=int,
+	parser.add_argument("--num_dimension", "-k", type=int, default=1,
 						help="dimensionality of bias subspace")
 	args = parser.parse_args()
 

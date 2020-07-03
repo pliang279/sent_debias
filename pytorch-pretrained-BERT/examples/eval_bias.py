@@ -66,7 +66,7 @@ def parse_args():
 	parser.add_argument("--results_dir", type=str,
 						help="directory for storing results")
 	parser.add_argument("--encode_only", action='store_true')
-	parser.add_argument("--num_dimension", "-k", type=int,
+	parser.add_argument("--num_dimension", "-k", type=int, default=1,
 						help="dimensionality of bias subspace")
 	args = parser.parse_args()
 	if (args.output_name == None):
