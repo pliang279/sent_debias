@@ -44,14 +44,14 @@ Unpack it to some directory `$GLUE_DIR`.
 
 ## Precomputed models and embeddings (optional)
 1. Models
-    * Download to `debias-BERT/examples`.
+    * Download to `debias-BERT/experiments`.
     * 
       ```
       tar -xvf acl2020-results
       ```
 
 2. Embeddings
-    * Download to `debias-BERT/examples`.
+    * Download to `debias-BERT/experiments`.
     * 
       ```
       tar -xvf saved_embs
@@ -63,7 +63,7 @@ If you choose to use precomputed models and embeddings, skip to step B. Otherwis
 
 ### A. Fine-tune BERT
 
-1. Go to `debias-BERT/examples`.
+1. Go to `debias-BERT/experiments`.
 2. Run `export TASK_NAME=SST-2` (task can be one of SST-2, CoLA, and QNLI).
 4. Fine tune BERT on `$TASK_NAME`.
     * With debiasing
@@ -95,7 +95,7 @@ If you choose to use precomputed models and embeddings, skip to step B. Otherwis
 
 ### B. Evaluate bias in BERT representations
 
-1. Go to `debias-BERT/examples`.
+1. Go to `debias-BERT/experiments`.
 2. Run ` export TASK_NAME=SST-2` (task can be one of SST-2, CoLA, and QNLI).
 3. Evaluate fine-tuned BERT on bias level.
     * Evaluate debiased fine-tuned BERT.
