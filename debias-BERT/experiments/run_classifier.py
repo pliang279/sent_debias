@@ -715,7 +715,7 @@ def get_encodings(args, encs, tokenizer, bert_encoder, gender_space, device,
 		emb_dict = {}
 		for index, emb in enumerate(all_embeddings):
 			emb /= np.linalg.norm(emb)
-			if (args.debias and not "male" in category):
+			if (args.debias and not category in {'male','female'}): # don't debias gender definitional sentences
 				emb = my_we.dropspace(emb, gender_space)
 			emb /= np.linalg.norm(emb) # Normalization actually doesn't affect e_size
 			emb_dict[index] = emb
