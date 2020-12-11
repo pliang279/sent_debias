@@ -14,6 +14,27 @@ Correspondence to:
 [Paul Pu Liang](http://www.cs.cmu.edu/~pliang/), Irene Li, Emily Zheng, Yao Chong Lim, [Ruslan Salakhutdinov](https://www.cs.cmu.edu/~rsalakhu/), and [Louis-Philippe Morency](https://www.cs.cmu.edu/~morency/)<br>
 ACL 2020
 
+If you find this repository useful, please cite our paper:
+```
+@inproceedings{liang-etal-2020-towards,
+    title = "Towards Debiasing Sentence Representations",
+    author = "Liang, Paul Pu  and
+      Li, Irene Mengze  and
+      Zheng, Emily  and
+      Lim, Yao Chong  and
+      Salakhutdinov, Ruslan  and
+      Morency, Louis-Philippe",
+    booktitle = "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics",
+    month = jul,
+    year = "2020",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/2020.acl-main.488",
+    doi = "10.18653/v1/2020.acl-main.488",
+    pages = "5502--5515",
+}
+```
+
 ## Installation
 
 First check that the requirements are satisfied:</br>
