@@ -11,7 +11,7 @@ Correspondence to:
 ## Paper
 
 [**Towards Debiasing Sentence Representations**](https://www.aclweb.org/anthology/2020.acl-main.488/)<br>
-[Paul Pu Liang](http://www.cs.cmu.edu/~pliang/), Irene Li, Emily Zheng, Yao Chong Lim, [Ruslan Salakhutdinov](https://www.cs.cmu.edu/~rsalakhu/), and [Louis-Philippe Morency](https://www.cs.cmu.edu/~morency/)<br>
+[Paul Pu Liang](http://www.cs.cmu.edu/~pliang/), [Irene Li](https://www.linkedin.com/in/mengze-irene-li-114592130/), [Emily Zheng](https://www.linkedin.com/in/emily-zheng-348190128/), Yao Chong Lim, [Ruslan Salakhutdinov](https://www.cs.cmu.edu/~rsalakhu/), and [Louis-Philippe Morency](https://www.cs.cmu.edu/~morency/)<br>
 ACL 2020
 
 If you find this repository useful, please cite our paper:
